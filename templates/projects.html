@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<div class="projects">
+    <h1>My Projects</h1>
+    
+    <div class="project-card">
+        <h2>Website Portofolio Pribadi</h2>
+        <div class="project-details">
+            <h3>Deskripsi Project</h3>
+            <p>Sebuah website portofolio pribadi yang dibangun menggunakan Flask (Python) untuk backend dan HTML/CSS untuk frontend. Website ini menampilkan informasi tentang diri saya, latar belakang pendidikan dan juga minat saya.</p>
+            
+            <h3>Fitur Utama</h3>
+            <ul>
+                <li>Halaman Home dengan profil singkat</li>
+                <li>Halaman About Me dengan riwayat pendidikan dan juga minat dan keahlian</li>
+                <li>Halaman Projects untuk mendeskripsikan project yang sedang saya buat</li>
+                <li>Halaman Contact dengan form pengiriman pesan</li>
+            </ul>
+            
+            <h3>Yang saya gunakan untuk project ini</h3>
+            <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Flask</span>
+                <span class="tech-item">HTML</span>
+                <span class="tech-item">CSS</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
