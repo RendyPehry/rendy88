@@ -1,27 +1,33 @@
-from flask import Flask, render_template  # Import modul Flask dan render_template
+from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)  # Membuat instance Flask
+app = Flask(__name__)
 
-# Route untuk halaman utama
 @app.route('/')
-def home():
-    return render_template('index.html')  # Render template index.html
+def index():
+    testimonials = [
+        {"name": "Regina", "text": "Desainnya keren dan cepat selesai!"},
+        {"name": "Rendy", "text": "Fast track sangat membantu deadline saya."},
+        {"name": "Raymond", "text": "Rekomendasi banget, komunikatif dan hasilnya bagus."}
+    ]
+    portfolio = [
+        {"img": "image.png", "desc": "Poster Event"},
+        {"img": "image.png", "desc": "Feed Instagram"},
+        {"img": "image.png", "desc": "Flyer Produk"}
+    ]
+    return render_template('index.html', testimonials=testimonials, portfolio=portfolio)
 
-# Route untuk halaman about
-@app.route('/about')
-def about():
-    return render_template('about.html')  # Render template about.html
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form['name']
+    email = request.form['email']
+    service_type = request.form['service']
+    description = request.form['description']
+    print(f"Order dari {name} ({email}) - {service_type}: {description}")
+    return redirect(url_for('thank_you'))
 
-# Route untuk halaman projects
-@app.route('/projects')
-def projects():
-    return render_template('projects.html')  # Render template projects.html
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank_you.html')
 
-# Route untuk halaman contact
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')  # Render template contact.html
-
-# Menjalankan aplikasi jika file di-execute langsung
 if __name__ == '__main__':
-    app.run(debug=True)  # Mode debug untuk development
+    app.run(debug=True)
