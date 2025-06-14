@@ -1,58 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Jasa Desain Canva</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Jasa Desain Canva</h1>
-        <p>Pilih layanan desain yang sesuai dengan kebutuhan Anda.</p>
-        <form action="/submit" method="POST">
-            <label>Nama:</label>
-            <input type="text" name="name" required>
-            
-            <label>Email:</label>
-            <input type="email" name="email" required>
-            
-            <label>Pilih Layanan:</label>
-            <select name="service" required>
-                <option value="Reguler">Reguler (2-3 hari)</option>
-                <option value="Fast Track">Fast Track (24 jam)</option>
-            </select>
-            
-            <label>Deskripsi Desain:</label>
-            <textarea name="description" required placeholder="Ceritakan kebutuhan desain Anda..."></textarea>
-            
-            <button type="submit">Kirim Pesanan</button>
-        </form>
-    </div>
-</body>
-</html>
-<hr>
+{% extends "base.html" %}
 
-<h2>Contoh Desain Kami</h2>
-<div class="portfolio">
-    {% for item in portfolio %}
-        <div class="card">
-            <img src="{{ url_for('static', filename=item.img) }}" alt="{{ item.desc }}">
-            <p>{{ item.desc }}</p>
-        </div>
-    {% endfor %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="profile">
+    <img src="{{ url_for('static', filename='rendy.png') }}" alt="Rendy Mareno Pehry">
+    <h1>Rendy Mareno Pehry</h1>
+    <p>Saya adalah mahasiswa Teknik Elektro di Universitas Padjadjaran, berasal dari Medan dan berusia 19 tahun. Di sela-sela kesibukan kuliah, saya menikmati waktu luang dengan membaca novel sambil mendengarkan lagu, sebuah kombinasi yang membantu saya tetap kreatif dan rileks.</p>
 </div>
-
-<hr>
-
-<h2>Testimoni Pelanggan</h2>
-<div class="testimonials">
-    {% for testimonial in testimonials %}
-        <blockquote>"{{ testimonial.text }}"<br>— <strong>{{ testimonial.name }}</strong></blockquote>
-    {% endfor %}
-</div>
-
-<hr>
-
-<div class="contact">
-    <p>Butuh bantuan cepat? Hubungi kami di <a href="https://wa.me/62012345678" target="_blank">WhatsApp 012345678</a></p>
-</div>
+{% endblock %}
